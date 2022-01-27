@@ -4,7 +4,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state:{
         token:'',
-        opt:'',
+        opt:localStorage.getItem('access_token')??'',
       inCart:JSON.parse(localStorage.getItem('myCart'))?JSON.parse(localStorage.getItem('myCart')):[],
                 
     },

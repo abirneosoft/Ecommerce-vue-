@@ -25,8 +25,9 @@
                         
                       /></router-link>
                      
-                      <h2>{{ pro.product_id }}</h2>
-                      <p>Easy Polo Black Edition</p>
+                      <h2>{{ pro.product_name }}</h2>
+                      <p>{{pro.price}}</p>
+                      <p>{{pro.description}}</p>
                       <a href="#" class="btn btn-default add-to-cart" @click="addCartBtn(pro)"
                         ><i class="fa fa-shopping-cart"></i>Add to cart</a
                       >
@@ -528,7 +529,7 @@ export default {
         .then((res) => {
           if (res) {
             console.log(res.data);
-          //  this.$swal("WISHLIST ADDED SUCCESS", "", "success");
+            this.$swal("WISHLIST ADDED SUCCESS", "", "success");
             
           }
         })

@@ -105,6 +105,7 @@
                   /></a>
                 </td>
                 <td class="cart_description">
+                  
                   <h4>
                     <a>{{ item.price }}</a>
                   </h4>
@@ -143,14 +144,30 @@
                 <td class="text-primary">Total</td>
                 <td>{{ total }}</td>
               </tr>
-            </span>
+              <tr>
+                 <td class="text-primary">Cash on delivary</td> 
+              </tr>
+            </span><br>
             <span
               class="d-flex align-items-end flex-column"
               style="height: 200px"
             >
+           
               <a class="btn btn-primary" @click="orderout()">Continue</a>
             </span>
+            
+           <div>
+             <h1>order by paypal</h1>
+             <Paypal/>
+           </div>
+
+            
+
           </table>
+           
+          <div>
+         
+          </div>
         </div>
       </div>
     </section>
@@ -159,12 +176,14 @@
 </template>
 
 <script>
+import Paypal from "../components/Paypal.vue"
 import { userDetail } from "@/common/Service";
 import { orderDetail } from "@/common/Service";
 import { coupons } from "@/common/Service";
 
 export default {
   name: "Checkout",
+  components:{Paypal},
   data() {
     return {
       email: localStorage.getItem("uid"),
@@ -197,7 +216,10 @@ export default {
       items.forEach((item) => {
         sum = sum + item.price * item.quantity;
       });
+       localStorage.setItem('amount',sum);
+
       return this.total=sum;
+
     },
     viewCart() {
       if (localStorage.getItem("mycart")) {
@@ -215,10 +237,13 @@ export default {
             if(this.details.type=='fixed'){
               this.discount=this.details.value;
               this.total=this.total-this.details.value;
+              localStorage.setItem('amount',this.total);
             }
             else{
            this.discount=this.total*(this.details.value/100);
              this.total=this.total-this.discount;
+              localStorage.setItem('amount',this.total);
+
              }
       
         }else{
@@ -237,7 +262,8 @@ export default {
           price: item.price,
           total: this.total,
           coupon_id:this.details.id,
-          coupon_code:this.details.code
+          coupon_code:this.details.code,
+          product_name:item.name
         };
         console.log(obj);
         orderDetail(obj).then((res) => {
@@ -258,6 +284,8 @@ export default {
       console.log(formData);
       userDetail(formData).then((res) => {
         if (res) {
+            localStorage.removeItem('mycart');
+
           console.log(res.data);
         }
       });

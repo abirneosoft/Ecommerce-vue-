@@ -119,7 +119,8 @@ postcontact(){
         .then(res=>{
             if(res){
               console.log(res.data);
-               //alert(res.data);
+            this.$swal("CONTACT ADDED SUCCESS", "", "success");
+               
             }
            
         })

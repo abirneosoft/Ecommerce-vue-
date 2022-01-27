@@ -15,7 +15,7 @@ import Changepassword from '../components/Changepassword.vue';
 import Cms from '../components/Cms.vue'
 import Wishlist from '../components/Wishlist.vue'
 import Order from '../components/Order.vue'
-
+import Paypal from '../components/Paypal.vue'
 export default new Router({
     routes: [
         {
@@ -88,6 +88,11 @@ export default new Router({
             path: '/logout',
             name: 'Logout',
             component: Logout
+        },
+        {
+            path: '/paypal',
+            name: 'Paypal',
+            component: Paypal
         }
     ],
 

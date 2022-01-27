@@ -163,12 +163,13 @@ import axios from "axios";
 export default {
   name: "Header",
    data(){
-    return{cms:[],conf:""}
+    return{cms:[],conf:"",}
   },
   computed: mapState({
     msg: (state) => state.opt,
     inCart() { return this.$store.getters.inCart},
-      numInCart() { return this.inCart.length}
+     numInCart() { return this.inCart.length},
+      // numInCart() { return this.$store.getters.count},
   }),
   created(){
         configure().then(res=>{

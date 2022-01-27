@@ -125,6 +125,10 @@ export default {
       var del = this.carts.indexOf(item);
       this.carts.splice(del, 1);
       localStorage.setItem("mycart", JSON.stringify(this.carts));
+
+      //  localStorage.setItem('cnt',this.carts.length)
+      //       this.$store.commit('change');
+      //       this.$store.commit('cnt');
     },
   },
   mounted() {

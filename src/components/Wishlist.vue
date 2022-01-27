@@ -69,7 +69,7 @@ export default {
       deletewishlist(id).then((res) => {
       this.carts = res.data;
         console.log(res.data);
-       
+      location.reload();   
 
       })
     }
@@ -82,6 +82,7 @@ export default {
       .then((res) => {
       this.carts = res.data;
       console.log(res.data);
+     
 
       })
        .catch((error) => {

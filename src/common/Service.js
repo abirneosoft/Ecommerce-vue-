@@ -56,7 +56,6 @@ export function cmsById(id)
 {
     return axios.get(`${MAIN_URL}cms/${id}`)
 }
-
 export function userWish(data)
 {
     return axios.post(`${MAIN_URL}wish`,data)
@@ -91,5 +90,7 @@ export function userWishlist()
 export function deletewishlist(id){
     return axios.delete(`${MAIN_URL}wish/${id}`)
 }
-
-export default {userLogin,userRegister,categories,banner,product_image,profiledit,profile,userWish,deletewishlist,coupons,configure};
+export function newsleter(data){
+    return axios.post(`${MAIN_URL}News`,data)
+}
+export default {userLogin,userRegister,categories,banner,product_image,profiledit,profile,userWish,deletewishlist,coupons,configure,newsleter};
